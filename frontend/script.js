@@ -31,7 +31,9 @@ const dictionary = {
         welcomeBack: "مرحباً بك مجدداً!",
         welcomeDesc: "لتظل على اتصال معنا، يرجى تسجيل الدخول ببياناتك الشخصية",
         helloFriend: "أهلاً بك يا صديقنا!",
-        helloDesc: "أدخل بياناتك الشخصية وابدأ رحلة التسوق العالمي معنا الآن"
+        helloDesc: "أدخل بياناتك الشخصية وابدأ رحلة التسوق العالمي معنا الآن",
+        otpAlert: "تم إرسال كود التحقق (OTP) إلى جوالك بنجاح!",
+        loginAlert: "تم تسجيل الدخول بنجاح!"
     },
     en: {
         htmlDir: "ltr",
@@ -50,7 +52,9 @@ const dictionary = {
         welcomeBack: "Welcome Back!",
         welcomeDesc: "To keep connected with us please login with your personal info",
         helloFriend: "Hello, Friend!",
-        helloDesc: "Enter your personal details and start your global shopping journey"
+        helloDesc: "Enter your personal details and start your global shopping journey",
+        otpAlert: "OTP verification code sent to your mobile successfully!",
+        loginAlert: "Logged in successfully!"
     }
 };
 
@@ -85,3 +89,16 @@ function toggleLanguage() {
     document.getElementById('txt-hello-friend').innerText = langData.helloFriend;
     document.getElementById('txt-hello-desc').innerText = langData.helloDesc;
 }
+
+// ==========================================
+// إضافة تفاعل الأزرار التجريبي للمعاينة الفورية
+// ==========================================
+document.getElementById('btn-signup-submit').addEventListener('click', function(e) {
+    e.preventDefault();
+    alert(dictionary[currentLang].otpAlert);
+});
+
+document.getElementById('btn-signin-submit').addEventListener('click', function(e) {
+    e.preventDefault();
+    alert(dictionary[currentLang].loginAlert);
+});
