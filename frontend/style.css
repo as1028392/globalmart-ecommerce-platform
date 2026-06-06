@@ -15,6 +15,31 @@ body{
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    position: relative;
+}
+
+.lang-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+}
+
+.lang-switcher button {
+    background-color: #512da8;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+}
+
+.lang-switcher button:hover {
+    background-color: #3f1d8a;
 }
 
 .container{
@@ -99,8 +124,17 @@ body{
     z-index: 2;
 }
 
+html[dir="rtl"] .sign-in {
+    right: 0;
+    left: auto;
+}
+
 .container.active .sign-in{
     transform: translateX(100%);
+}
+
+html[dir="rtl"] .container.active .sign-in {
+    transform: translateX(-100%);
 }
 
 .sign-up{
@@ -110,11 +144,20 @@ body{
     z-index: 1;
 }
 
+html[dir="rtl"] .sign-up {
+    right: 0;
+    left: auto;
+}
+
 .container.active .sign-up{
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
     animation: move 0.6s;
+}
+
+html[dir="rtl"] .container.active .sign-up {
+    transform: translateX(-100%);
 }
 
 @keyframes move{
@@ -138,10 +181,17 @@ body{
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 0 3px;
+    margin: 0 5px;
     width: 40px;
     height: 40px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #333;
 }
+
+.fa-google { color: #db4437; }
+.fa-facebook-f { color: #1877f2; }
+.fa-vk { color: #0077ff; }
 
 .toggle-container{
     position: absolute;
@@ -155,9 +205,20 @@ body{
     z-index: 1000;
 }
 
+html[dir="rtl"] .toggle-container {
+    right: 50%;
+    left: auto;
+    border-radius: 0 150px 100px 0;
+}
+
 .container.active .toggle-container{
     transform: translateX(-100%);
     border-radius: 0 150px 100px 0;
+}
+
+html[dir="rtl"] .container.active .toggle-container {
+    transform: translateX(100%);
+    border-radius: 150px 0 0 100px;
 }
 
 .toggle{
@@ -167,14 +228,22 @@ body{
     color: #fff;
     position: relative;
     left: -100%;
-    height: 100%;
     width: 200%;
     transform: translateX(0);
     transition: all 0.6s ease-in-out;
 }
 
+html[dir="rtl"] .toggle {
+    right: -100%;
+    left: auto;
+}
+
 .container.active .toggle{
     transform: translateX(50%);
+}
+
+html[dir="rtl"] .container.active .toggle {
+    transform: translateX(-50%);
 }
 
 .toggle-panel{
@@ -196,6 +265,10 @@ body{
     transform: translateX(-200%);
 }
 
+html[dir="rtl"] .toggle-left {
+    transform: translateX(200%);
+}
+
 .container.active .toggle-left{
     transform: translateX(0);
 }
@@ -205,6 +278,19 @@ body{
     transform: translateX(0);
 }
 
+html[dir="rtl"] .toggle-right {
+    left: 0;
+    right: auto;
+}
+
 .container.active .toggle-right{
     transform: translateX(200%);
+}
+
+html[dir="rtl"] .container.active .toggle-right {
+    transform: translateX(-200%);
+}
+
+[lang="ar"] * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
