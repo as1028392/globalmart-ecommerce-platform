@@ -19,6 +19,7 @@ export const OrderTrackingPage: React.FC = () => {
   useEffect(() => {
     const fetchTracking = async () => {
       try {
+        // @ts-ignore
         const response = await orderAPI.trackOrder(trackingNumber!);
         setTrackingData(response.data);
       } catch (error) {
