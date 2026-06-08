@@ -10,7 +10,6 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
 
-// محرك تحويل اللغات الذكي (العربية / الإنجليزية)
 let currentLang = 'ar'; 
 
 const dictionary = {
@@ -62,9 +61,10 @@ function toggleLanguage() {
     currentLang = currentLang === 'ar' ? 'en' : 'ar';
     const langData = dictionary[currentLang];
     const htmlTag = document.getElementById('app-html');
-    
-    htmlTag.setAttribute('dir', langData.htmlDir);
-    htmlTag.setAttribute('lang', currentLang);
+    if(htmlTag) {
+        htmlTag.setAttribute('dir', langData.htmlDir);
+        htmlTag.setAttribute('lang', currentLang);
+    }
     
     document.getElementById('lang-btn').innerText = langData.langBtnText;
     document.getElementById('login').innerText = langData.btnSignin;
@@ -90,48 +90,11 @@ function toggleLanguage() {
     document.getElementById('txt-hello-desc').innerText = langData.helloDesc;
 }
 
-// ==========================================
-// إضافة تفاعل الأزرار التجريبي للمعاينة الفورية
-// ==========================================
 document.getElementById('btn-signup-submit').addEventListener('click', function(e) {
     e.preventDefault();
     alert(dictionary[currentLang].otpAlert);
-
-// ==========================================
-// الربط الفعلي بالسيرفر باستخدام Fetch
-// ==========================================
-
-// 1. ربط زر إنشاء الحساب (Sign Up)
-document.getElementById('btn-signup-submit').addEventListener('click', async function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('input-name').value;
-    const phone = document.getElementById('input-phone-signup').value;
-    const password = document.getElementById('input-pass-signup').value;
-
-    if(!name || !phone || !password) {
-        alert(currentLang === 'ar' ? "برجاء ملء جميع الحقول!" : "Please fill all fields!");
-        return;
-    }
-
-    try {
-        // الـ Fetch هنا يأخذ البيانات ويرسلها للسيرفر المحلي منفذ 5000
-        const response = await fetch('http://localhost:5000/api/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, phone, password })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert(currentLang === 'ar' ? "تم إرسال كود التحقق (OTP) إلى جوالك بنجاح!" : "OTP verification code sent!");
-        } else {
-            alert(data.message || "Error");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert(currentLang === 'ar' ? "فشل الاتصال بالسيرفر! تأكد أن سيرفر الـ backend يعمل" : "Server connection failed!");
-    }
 });
-    
+
+document.getElementById('btn-signin-submit').addEventListener('click', function(e) {
+    e.preventDefault();
+    alert(dictionary[currentLang].loginAlert);
