@@ -16,24 +16,23 @@ class UserRegister(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "full_name": "أحمد محمد",
-                "email": "ahmed@example.com",
-                "phone": "201001234567",
-                "password": "SecurePass123!",
-                "password_confirm": "SecurePass123!"
+                "full_name": "Mostafa",
+                "phone": "201034804073",
+                "password": "As998877!",
+                "password_confirm": "As998877!"
             }
         }
 
 class UserLogin(BaseModel):
     """User login schema"""
-    email: EmailStr = Field(..., description="Email address")
+    phone: PhoneStr = Field(..., description="Phone address")
     password: str = Field(..., description="Password")
     
     class Config:
         schema_extra = {
             "example": {
-                "email": "ahmed@example.com",
-                "password": "SecurePass123!"
+                "phone": "201034804073",
+                "password": "As998877!"
             }
         }
 
@@ -45,8 +44,8 @@ class UserUpdate(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "full_name": "أحمد محمد علي",
-                "phone": "201001234567"
+                "full_name": "Mostafa",
+                "phone": "201034804073"
             }
         }
 
@@ -86,9 +85,8 @@ class UserResponse(BaseModel):
         schema_extra = {
             "example": {
                 "id": 1,
-                "email": "ahmed@example.com",
-                "full_name": "أحمد محمد",
-                "phone": "201001234567",
+                "full_name": "Mostafa",
+                "phone": "201034804073",
                 "is_verified": True,
                 "is_active": True,
                 "created_at": "2026-06-10T16:00:00Z"
