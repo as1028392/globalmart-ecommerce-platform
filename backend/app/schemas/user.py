@@ -18,8 +18,8 @@ class UserRegister(BaseModel):
             "example": {
                 "full_name": "Mostafa",
                 "phone": "201034804073",
-                "password": "As998877!",
-                "password_confirm": "As998877!"
+                "password": "As99887766!",
+                "password_confirm": "As99887766!"
             }
         }
 
@@ -32,7 +32,7 @@ class UserLogin(BaseModel):
         schema_extra = {
             "example": {
                 "phone": "201034804073",
-                "password": "As998877!"
+                "password": "As99887766!"
             }
         }
 
